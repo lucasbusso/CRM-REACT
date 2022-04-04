@@ -6,15 +6,25 @@ import Alerta from './Alerta'
 const Formulario = () => {
 
     const nuevoClienteSchema = Yup.object().shape({
-        nombre: Yup.string().min(3, 'El nombre es muy corto').max(15, 'El nombre es muy largo').required('El nombre del cliente es obligatorio'),
-        empresa: '',
-        email: '',
-        telefono: '',
-        notas: ''        
+        nombre: Yup.string()
+                   .min(3, 'El nombre es muy corto')
+                   .max(15, 'El nombre es muy largo')
+                   .required('El nombre del cliente es obligatorio'),
+        empresa: Yup.string()
+                    .required('El nombre de la empresa es obligatorio'),
+        email: Yup.string()
+                  .email('Email no válido')
+                  .required('El email del cliente es obligatorio'),
+        telefono: Yup.number()
+                     .integer('Número de teléfono no válido')
+                     .positive('Número de teléfono no válido')
+                     .required('Número de teléfono no válido')
+                     .typeError('Número de teléfono no válido')        
     })
-    const handleSubmit = (valores) => {
 
-    }
+    const handleSubmit = (valores) => {
+        console.log(valores)
+    }   
 
   return (
     <div className='bg-white mt-10 px-5 py-10 rounded-md shadow-md md:w-3/4 mx-auto'>
@@ -68,8 +78,10 @@ const Formulario = () => {
                             className="mt-3 block w-full p-3 bg-gray-50"
                             placeholder="Empresa del cliente"
                             name="empresa"
-
                         />
+                            {errors.empresa && touched.empresa ? (
+                            <Alerta>{errors.empresa}</Alerta>
+                        ) : null }
                     </div>
 
                     <div className='mb-4'>
@@ -84,6 +96,9 @@ const Formulario = () => {
                             placeholder="Email del cliente"
                             name="email"
                         />
+                            {errors.email && touched.email ? (
+                            <Alerta>{errors.email}</Alerta>
+                        ) : null }
                     </div>
 
                     <div className='mb-4'>
@@ -98,6 +113,9 @@ const Formulario = () => {
                             placeholder="Telefono del cliente"
                             name="telefono"
                         />
+                        {errors.telefono && touched.telefono ? (
+                        <Alerta>{errors.telefono}</Alerta>
+                        ) : null }
                     </div>
 
                     <div className='mb-4'>
