@@ -1,13 +1,41 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
+import * as Yup from 'yup'
+import Alerta from './Alerta'
 
 const Formulario = () => {
+
+    const nuevoClienteSchema = Yup.object().shape({
+        nombre: Yup.string().min(3, 'El nombre es muy corto').max(15, 'El nombre es muy largo').required('El nombre del cliente es obligatorio'),
+        empresa: '',
+        email: '',
+        telefono: '',
+        notas: ''        
+    })
+    const handleSubmit = (valores) => {
+
+    }
+
   return (
     <div className='bg-white mt-10 px-5 py-10 rounded-md shadow-md md:w-3/4 mx-auto'>
         <h1 className='text-gray-600 font-bold text-xl uppercase text-center'>
             Agregar Cliente</h1>
 
-            <Formik>
+            <Formik
+                initialValues={{
+                    nombre: '',
+                    empresa: '',
+                    email: '',
+                    telefono: '',
+                    notas: ''
+                }}
+                onSubmit={ (values) => {
+                    handleSubmit(values)
+                }}
+                validationSchema={nuevoClienteSchema}
+            >
+            {({errors, touched}) =>  {
+                return (
                 <Form
                     className='mt-10'
                 >
@@ -22,7 +50,11 @@ const Formulario = () => {
                             type="text"
                             className="mt-3 block w-full p-3 bg-gray-50"
                             placeholder="Nombre del cliente"
+                            name="nombre"
                         />
+                        {errors.nombre && touched.nombre ? (
+                            <Alerta>{errors.nombre}</Alerta>
+                        ) : null }
                     </div>
 
                     <div className='mb-4'>
@@ -35,6 +67,8 @@ const Formulario = () => {
                             type="text"
                             className="mt-3 block w-full p-3 bg-gray-50"
                             placeholder="Empresa del cliente"
+                            name="empresa"
+
                         />
                     </div>
 
@@ -48,6 +82,7 @@ const Formulario = () => {
                             type="email"
                             className="mt-3 block w-full p-3 bg-gray-50"
                             placeholder="Email del cliente"
+                            name="email"
                         />
                     </div>
 
@@ -61,6 +96,7 @@ const Formulario = () => {
                             type="tel"
                             className="mt-3 block w-full p-3 bg-gray-50"
                             placeholder="Telefono del cliente"
+                            name="telefono"
                         />
                     </div>
 
@@ -75,6 +111,7 @@ const Formulario = () => {
                             type="text"
                             className="mt-3 block w-full p-3 bg-gray-50 h-40"
                             placeholder="Notas del cliente"
+                            name="notas"
                         />
                     </div>
                     <input 
@@ -82,9 +119,8 @@ const Formulario = () => {
                     type="submit" 
                     className='mt-5 w-full bg-blue-800 p-4 text-white uppercase font-bold text-lg rounded-md shadow-md cursor-pointer hover:bg-blue-900'
                     />
-
-
                 </Form>
+              )}}
             </Formik>
     </div>
   )
