@@ -1,9 +1,13 @@
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
+import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
 import Alerta from './Alerta'
 
+
 const Formulario = () => {
+
+    const navigate = useNavigate()
 
     const nuevoClienteSchema = Yup.object().shape({
         nombre: Yup.string()
@@ -22,8 +26,24 @@ const Formulario = () => {
                      .typeError('Número de teléfono no válido')        
     })
 
-    const handleSubmit = (valores) => {
-        console.log(valores)
+    const handleSubmit = async (valores) => {
+        try {
+            const url = 'http://localhost:4000/clientes'
+
+            const respuesta = await fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(valores),
+                headers: {
+                    'content-type': 'application/json'
+                }
+            })
+
+            const resultado = respuesta.json()
+            console.log(resultado)
+            navigate('/clientes')
+        } catch (error) {
+            console.log(error)
+        }
     }   
 
   return (
@@ -39,8 +59,10 @@ const Formulario = () => {
                     telefono: '',
                     notas: ''
                 }}
-                onSubmit={ (values) => {
-                    handleSubmit(values)
+                onSubmit={ async (values, {resteForm}) => {
+                    await handleSubmit(values)
+
+                    resteForm()
                 }}
                 validationSchema={nuevoClienteSchema}
             >
@@ -132,11 +154,13 @@ const Formulario = () => {
                             name="notas"
                         />
                     </div>
+
                     <input 
                     value="Agregar cliente"
                     type="submit" 
                     className='mt-5 w-full bg-blue-800 p-4 text-white uppercase font-bold text-lg rounded-md shadow-md cursor-pointer hover:bg-blue-900'
                     />
+                    
                 </Form>
               )}}
             </Formik>

@@ -1,0 +1,36 @@
+{
+  "clientes": [
+    {
+      "nombre": "Lucas",
+      "empresa": "Lucaxx",
+      "email": "lucasxbusso@gmail.com",
+      "telefono": "213578645",
+      "notas": "suspoodiucho",
+      "id": 1
+    },
+    {
+      "nombre": "Lucas",
+      "empresa": "Luucaszzz",
+      "email": "lucasxbusso@gmail.com",
+      "telefono": "216543513",
+      "notas": "aishdiquwre",
+      "id": 2
+    },
+    {
+      "nombre": "Fulano",
+      "empresa": "puta",
+      "email": "lism.etcheverry@gmail.com",
+      "telefono": "546546",
+      "notas": "asdhu",
+      "id": 3
+    },
+    {
+      "nombre": "Mengano",
+      "empresa": "putoi",
+      "email": "lucasxbusso@gmail.com",
+      "telefono": "6574654",
+      "notas": "sd4fasdfrg",
+      "id": 4
+    }
+  ]
+}
