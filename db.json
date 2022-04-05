@@ -2,14 +2,6 @@
   "clientes": [
     {
       "nombre": "Lucas",
-      "empresa": "Lucaxx",
-      "email": "lucasxbusso@gmail.com",
-      "telefono": "213578645",
-      "notas": "suspoodiucho",
-      "id": 1
-    },
-    {
-      "nombre": "Lucas",
       "empresa": "Luucaszzz",
       "email": "lucasxbusso@gmail.com",
       "telefono": "216543513",
@@ -25,20 +17,28 @@
       "id": 3
     },
     {
-      "nombre": "Mengano",
-      "empresa": "putoi",
-      "email": "lucasxbusso@gmail.com",
-      "telefono": "6574654",
-      "notas": "sd4fasdfrg",
-      "id": 4
-    },
-    {
       "nombre": "flor",
       "empresa": "florsis",
       "email": "floor@glor.com",
       "telefono": "123245687",
       "notas": "sdfsdfga",
       "id": 5
+    },
+    {
+      "nombre": "Lucasssss",
+      "empresa": "Lucaxx",
+      "email": "lucasxbusso@gmail.com",
+      "telefono": "213578645",
+      "notas": "suspoodiucho",
+      "id": 6
+    },
+    {
+      "nombre": "Luuuuucasssss",
+      "empresa": "Lucaxx",
+      "email": "lucasxbusso@gmail.com",
+      "telefono": "213578645",
+      "notas": "suspoodiucho",
+      "id": 7
     }
   ]
 }
