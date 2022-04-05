@@ -7,6 +7,7 @@ import EditarCliente from './paginas/EditarCliente'
 import VerCliente from './paginas/VerCliente'
 
 function App() {
+  console.log()
 
   return (
     <BrowserRouter>
